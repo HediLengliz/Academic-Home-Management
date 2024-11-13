@@ -1,5 +1,13 @@
 package tn.esprit.tpfoyer.Services;
 
-public interface IUniversiteService {
+import tn.esprit.tpfoyer.Entities.Universite;
 
+import java.util.List;
+
+public interface IUniversiteService {
+    List<Universite> retrieveAllUniversites();
+    Universite retrieveUniversite(Long universiteId);
+    Universite addUniversite(Universite universite);
+    void removeUniversite(Long universiteId);
+    Universite modifyUniversite(Universite universite);
 }
