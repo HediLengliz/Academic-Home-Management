@@ -10,4 +10,5 @@ public interface IBlocService {
     Bloc addBloc(Bloc bloc);
     void removeBloc(Long blocId);
     Bloc modifyBloc(Bloc bloc);
+    void desaffecterBlocDeFoyer(Long blocId);
 }

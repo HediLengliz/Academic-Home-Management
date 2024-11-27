@@ -2,6 +2,7 @@ package tn.esprit.tpfoyer.Services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.tpfoyer.Entities.Bloc;
 import tn.esprit.tpfoyer.Entities.Foyer;
 import tn.esprit.tpfoyer.Repositories.FoyerRepository;
 
@@ -35,6 +36,16 @@ public class FoyerService implements  IFoyerService {
 
     @Override
     public Foyer modifyFoyer(Foyer foyer) {
+        return foyerRepository.save(foyer);
+    }
+
+    @Override
+    public Foyer creerBlocEtFoyer(Foyer foyer, Bloc bloc) {
+        // Ajouter le bloc au foyer
+        bloc.setFoyer(foyer);
+        foyer.getBlocs().add(bloc);
+
+        // Sauvegarder le foyer et son bloc
         return foyerRepository.save(foyer);
     }
 }

@@ -3,6 +3,7 @@ package tn.esprit.tpfoyer.Controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.Entities.Bloc;
 import tn.esprit.tpfoyer.Services.BlocService;
@@ -42,6 +43,15 @@ public class BlocController {
     public Bloc modifyBloc(@RequestBody Bloc bloc) {
         return blocService.modifyBloc(bloc);
     }
-
+    @PostMapping("/affecter/{blocId}/foyer/{foyerId}")
+    public ResponseEntity<String> affecterBlocAFoyer(@PathVariable Long blocId, @PathVariable Long foyerId) {
+        blocService.affecterBlocAFoyer(blocId, foyerId);
+        return ResponseEntity.ok("Bloc affecté au foyer avec succès.");
+    }
+    @DeleteMapping("/desaffecter/{blocId}")
+    public ResponseEntity<String> desaffecterBlocDeFoyer(@PathVariable Long blocId) {
+        blocService.desaffecterBlocDeFoyer(blocId);
+        return ResponseEntity.ok("Bloc désaffecté du foyer avec succès.");
+    }
 
 }

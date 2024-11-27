@@ -1,7 +1,10 @@
 package tn.esprit.tpfoyer.Controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.tpfoyer.Entities.Bloc;
 import tn.esprit.tpfoyer.Entities.Foyer;
 import tn.esprit.tpfoyer.Services.FoyerService;
 import tn.esprit.tpfoyer.Services.IFoyerService;
@@ -38,5 +41,10 @@ public class FoyerController {
     @PutMapping("/modify-foyer")
     public Foyer modifyFoyer(@RequestBody Foyer foyer) {
         return foyerService.modifyFoyer(foyer);
+    }
+    @PostMapping("/creer-bloc-foyer")
+    public ResponseEntity<Foyer> creerBlocEtFoyer(@RequestBody Foyer foyer, @RequestBody Bloc bloc) {
+        Foyer savedFoyer = foyerService.creerBlocEtFoyer(foyer, bloc);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedFoyer);
     }
 }
