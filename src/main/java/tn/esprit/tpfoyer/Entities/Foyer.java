@@ -12,14 +12,14 @@ import java.util.List;
 public class Foyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idFoyer;
+    private Long idFoyer;
     private String nomFoyer;
-    private long CapaciteFoyer;
+    private Long CapaciteFoyer;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "universite_id")
+
+    @OneToOne(mappedBy = "foyer", cascade = CascadeType.ALL)
     private Universite universite;
-
     @OneToMany(mappedBy = "foyer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Bloc> blocs;
+
 }

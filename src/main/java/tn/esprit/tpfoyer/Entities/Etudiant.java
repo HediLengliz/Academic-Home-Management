@@ -13,9 +13,9 @@ import java.util.List;
 public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idEtudiant;
+    private Long idEtudiant;
     private String nomEt;
-    private long cin;
+    private Long cin;
     private String ecole;
     private Date dateNaissance;
 

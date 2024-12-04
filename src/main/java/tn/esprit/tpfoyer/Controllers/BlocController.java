@@ -53,5 +53,9 @@ public class BlocController {
         blocService.desaffecterBlocDeFoyer(blocId);
         return ResponseEntity.ok("Bloc désaffecté du foyer avec succès.");
     }
+    @GetMapping("/findBlocWithoutFoyer")
+    public List<Bloc> findBlocWithoutFoyer() {
+        return blocService.findAllByFoyerIsNull();
+    }
 
 }

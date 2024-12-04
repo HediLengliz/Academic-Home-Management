@@ -12,11 +12,11 @@ import java.util.List;
 public class Bloc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idBloc;
+    private Long idBloc;
     private String nomBloc;
-    private long capaciteBloc;
+    private Long capaciteBloc;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "foyer_id")
     private Foyer foyer;
 

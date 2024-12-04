@@ -50,4 +50,8 @@ public class ChambreController {
     public Chambre modifyChambre(@RequestBody Chambre c) {
         return chambreService.modifyChambre(c);
     }
+    @GetMapping("/findChambreByEtudiantAndReservation/{etudiantCIN}/{reservationId}")
+    public List<Chambre> findChambreByEtudiantAndReservation(@PathVariable("etudiantCIN") long etudiantCIN, @PathVariable("reservationId") Long reservationId) {
+        return chambreService.findChambreByEtudiantAndReservation(etudiantCIN, reservationId);
+    }
 }

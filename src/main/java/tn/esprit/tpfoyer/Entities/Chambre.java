@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -13,8 +14,8 @@ public class Chambre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idChambre;
-    private long numeroChambre;
+    private Long idChambre;
+    private Long numeroChambre;
 
     @Enumerated(EnumType.STRING)
     private TypeChambre typeC;
@@ -24,5 +25,13 @@ public class Chambre {
     private Bloc bloc;
 
     @OneToMany( cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @JsonIgnore
     private Set<Reservation> reservations;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    @ToString.Exclude
+    @JoinColumn(name = "etudiant_id")
+    private Etudiant etudiant;
+
 }

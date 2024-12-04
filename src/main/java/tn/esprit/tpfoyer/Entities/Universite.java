@@ -11,10 +11,11 @@ import lombok.*;
 public class Universite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idUniversite;
+    private Long idUniversite;
     private String nomUniversite;
     private String adresse;
-
-    @OneToOne(mappedBy = "universite", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "foyer_id")
     private Foyer foyer;
+
 }

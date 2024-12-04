@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
@@ -13,18 +14,13 @@ import java.util.List;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idReservation;
+    private Long idReservation;
     private Date anneeUniversitaire;
-    private boolean estValide;
-
-
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "etudiant_reservation",
-            joinColumns = @JoinColumn(name = "reservation_id"),
-            inverseJoinColumns = @JoinColumn(name = "etudiant_id")
-    )
+    private Boolean estValide;
+    @ManyToMany( cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ToString.Exclude
     private List<Etudiant> etudiants;
+
 
 }

@@ -1,6 +1,9 @@
 package tn.esprit.tpfoyer.Services;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.Entities.Bloc;
 import tn.esprit.tpfoyer.Entities.Foyer;
@@ -11,13 +14,17 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class BlocService implements  IBlocService {
     private final FoyerRepository foyerRepository;
     private final BlocRepository blocRepository;
 
     @Override
+    @Scheduled(fixedRate = 1000)
     public List<Bloc> retrieveAllBlocs() {
-        return blocRepository.findAll();
+        List<Bloc> blocs = blocRepository.findAll();
+        log.info("Retrieved Blocs: {}", blocs);
+        return blocs;
     }
 
     @Override
@@ -77,4 +84,10 @@ public class BlocService implements  IBlocService {
             throw new RuntimeException("Le bloc n'est pas affecté à un foyer.");
         }
     }
+
+    @Override
+    public List<Bloc> findAllByFoyerIsNull() {
+        return blocRepository.findAllByFoyerIsNull();
+    }
+
 }

@@ -27,4 +27,7 @@ public class ChambreService implements IChambreService {
     public Chambre modifyChambre(Chambre chambre) {
         return chambreRepository.save(chambre);
     }
+    public List <Chambre> findChambreByEtudiantAndReservation(long etudiantCIN, long reservationId){
+        return chambreRepository.findChambreByEtudiantAndReservation(etudiantCIN, reservationId);
+    }
 }
