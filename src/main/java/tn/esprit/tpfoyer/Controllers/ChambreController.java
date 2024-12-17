@@ -5,6 +5,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.Entities.Chambre;
+import tn.esprit.tpfoyer.Entities.Etudiant;
+import tn.esprit.tpfoyer.Entities.Reservation;
 import tn.esprit.tpfoyer.Services.ChambreService;
 import tn.esprit.tpfoyer.Services.IChambreService;
 
@@ -50,8 +52,12 @@ public class ChambreController {
     public Chambre modifyChambre(@RequestBody Chambre c) {
         return chambreService.modifyChambre(c);
     }
-    @GetMapping("/findChambreByEtudiantAndReservation/{etudiantCIN}/{reservationId}")
-    public List<Chambre> findChambreByEtudiantAndReservation(@PathVariable("etudiantCIN") long etudiantCIN, @PathVariable("reservationId") Long reservationId) {
-        return chambreService.findChambreByEtudiantAndReservation(etudiantCIN, reservationId);
+    @GetMapping("/findChambreByEtudiantAndReservation/")
+    public List<Chambre> findChambreByEtudiant(@RequestParam Long idEtudiant) {
+        return chambreService.findChambreByEtudiant(idEtudiant);
     }
+//    @PostMapping("/add-chambre-with-reservation-and-etudiant")
+//    public Chambre addChambreWithReservationAndEtudiant(@RequestBody Chambre chambre, @RequestParam Long etudiantCIN, @RequestParam Long reservationId) {
+//        return chambreService.addChambreWithReservationAndEtudiant(chambre, etudiantCIN, reservationId);
+//    }
 }

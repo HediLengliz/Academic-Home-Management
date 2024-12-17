@@ -3,6 +3,8 @@ package tn.esprit.tpfoyer.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,10 +30,5 @@ public class Chambre {
     @ToString.Exclude
     @JsonIgnore
     private Set<Reservation> reservations;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JsonIgnore
-    @ToString.Exclude
-    @JoinColumn(name = "etudiant_id")
-    private Etudiant etudiant;
 
 }

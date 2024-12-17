@@ -3,6 +3,7 @@ package tn.esprit.tpfoyer.Services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.Entities.Etudiant;
+import tn.esprit.tpfoyer.Entities.Reservation;
 import tn.esprit.tpfoyer.Repositories.EtudiantRepository;
 
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 public class EtudiantService implements  IEtudiantService {
 
-    EtudiantRepository etudiantRepository;
+ private final EtudiantRepository etudiantRepository;
+ private  final ReservationService reservationService;
 
     public List<Etudiant> retrieveAllEtudiants() {
         return etudiantRepository.findAll();

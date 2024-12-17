@@ -45,7 +45,7 @@ public class ReservationService implements IReservationService {
         return reservationRepository.save(reservation);
     }
 
-    @Scheduled(fixedRate = 50000)
+//    @Scheduled(fixedRate = 50000)
     //@Scheduled(cron = "*/50 * * * * *")
     public void mettreAJourEtAfficherReservations() {
         Date cutoffDate = Date.from(LocalDate.of(2024, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());

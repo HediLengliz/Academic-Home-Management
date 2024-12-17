@@ -21,4 +21,5 @@ public class Etudiant {
 
     @ManyToMany(mappedBy = "etudiants", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Reservation> reservations;
+
 }

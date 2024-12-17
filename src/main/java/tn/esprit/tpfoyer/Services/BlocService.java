@@ -20,11 +20,16 @@ public class BlocService implements  IBlocService {
     private final BlocRepository blocRepository;
 
     @Override
-    @Scheduled(fixedRate = 1000)
+//    @Scheduled(fixedRate = 1000)
     public List<Bloc> retrieveAllBlocs() {
         List<Bloc> blocs = blocRepository.findAll();
         log.info("Retrieved Blocs: {}", blocs);
         return blocs;
+    }
+//    @Scheduled(fixedRate = 2000) // 120000 milliseconds = 2 minutes
+    public void displayUnassignedBlocs() {
+        List<Bloc> unassignedBlocs = blocRepository.findAllByFoyerIsNull();
+        System.out.println("Unassigned Blocs: " + unassignedBlocs);
     }
 
     @Override

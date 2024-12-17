@@ -21,6 +21,10 @@ public class Reservation {
     @JsonIgnore
     @ToString.Exclude
     private List<Etudiant> etudiants;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ToString.Exclude
+    private Chambre chambre;
 
 
 }

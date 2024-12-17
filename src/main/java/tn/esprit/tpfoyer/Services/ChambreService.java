@@ -3,20 +3,27 @@ package tn.esprit.tpfoyer.Services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.Entities.Chambre;
+import tn.esprit.tpfoyer.Entities.Etudiant;
+import tn.esprit.tpfoyer.Entities.Reservation;
 import tn.esprit.tpfoyer.Repositories.ChambreRepository;
+import tn.esprit.tpfoyer.Repositories.EtudiantRepository;
+import tn.esprit.tpfoyer.Repositories.ReservationRepository;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class ChambreService implements IChambreService {
 
-    ChambreRepository chambreRepository;
+    private final ReservationRepository reservationRepository;
+    private final EtudiantRepository etudiantRepository;
+    private final  ChambreRepository chambreRepository;
     public List<Chambre> retrieveAllChambres() {
         return chambreRepository.findAll();
     }
     public Chambre retrieveChambre(Long chambreId) {
-        return chambreRepository.findById(chambreId).get();
+        return chambreRepository.findById(chambreId).orElseThrow(() -> new RuntimeException("chamber not found"));
     }
     public Chambre addChambre(Chambre c) {
         return chambreRepository.save(c);
@@ -27,7 +34,8 @@ public class ChambreService implements IChambreService {
     public Chambre modifyChambre(Chambre chambre) {
         return chambreRepository.save(chambre);
     }
-    public List <Chambre> findChambreByEtudiantAndReservation(long etudiantCIN, long reservationId){
-        return chambreRepository.findChambreByEtudiantAndReservation(etudiantCIN, reservationId);
+    public List <Chambre> findChambreByEtudiant(Long idEtudiant) {
+        return chambreRepository.findChambreByEtudiant(idEtudiant);
     }
+
 }
