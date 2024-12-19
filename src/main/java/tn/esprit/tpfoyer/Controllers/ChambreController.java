@@ -53,8 +53,8 @@ public class ChambreController {
         return chambreService.modifyChambre(c);
     }
     @GetMapping("/findChambreByEtudiantAndReservation/")
-    public List<Chambre> findChambreByEtudiant(@RequestParam Long idEtudiant) {
-        return chambreService.findChambreByEtudiant(idEtudiant);
+    public List<Chambre> findChambreByEtudiant(@RequestParam Long cin, @RequestParam Long idBloc) {
+        return chambreService.findChambreByEtudiant(cin,idBloc);
     }
 //    @PostMapping("/add-chambre-with-reservation-and-etudiant")
 //    public Chambre addChambreWithReservationAndEtudiant(@RequestBody Chambre chambre, @RequestParam Long etudiantCIN, @RequestParam Long reservationId) {

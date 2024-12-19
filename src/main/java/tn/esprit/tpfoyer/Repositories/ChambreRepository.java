@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 public interface ChambreRepository extends JpaRepository<Chambre,Long> {
-    @Query("SELECT c FROM Chambre c JOIN c.reservations r JOIN r.etudiants e WHERE e.idEtudiant = :idEtudiant")
-    List<Chambre> findChambreByEtudiant(@RequestParam Long idEtudiant);
+    @Query("SELECT c FROM Chambre c JOIN c.reservations r JOIN r.etudiants e WHERE e.cin = :cin AND c.bloc.idBloc = :idBloc")
+    List<Chambre> findChambreByEtudiant(@RequestParam Long cin, @RequestParam Long idBloc);
 
 }

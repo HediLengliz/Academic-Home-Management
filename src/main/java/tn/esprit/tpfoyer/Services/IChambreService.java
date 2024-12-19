@@ -13,6 +13,6 @@ public interface IChambreService {
     public Chambre addChambre(Chambre c);
     public void removeChambre(Long chambreId);
     public Chambre modifyChambre(Chambre chambre);
-    List <Chambre> findChambreByEtudiant(Long idEtudiant);
+    List <Chambre> findChambreByEtudiant(Long cin,Long idBloc);
 //    public Chambre addChambreWithReservationAndEtudiant(Chambre chambre, Long etudiantCIN, Long reservationId);
 }

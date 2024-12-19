@@ -30,5 +30,9 @@ public class Chambre {
     @ToString.Exclude
     @JsonIgnore
     private Set<Reservation> reservations;
+    @ToString.Exclude
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Etudiant> etudiants ;
 
 }
